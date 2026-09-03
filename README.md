@@ -9,6 +9,12 @@ Na systemach Debian/Ubuntu można je zainstalować za pomocą:
 ```bash
 sudo apt install libsnap7-1 libsnap7-dev
 ```
+Jeżeli pakiety libsnap7-1 lub libsnap7-dev nie są dostępne w domyślnych repozytoriach, należy dodać repozytorium PPA:
+```bash
+sudo add-apt-repository ppa:gijzelaar/snap7
+sudo apt update
+sudo sudo apt install libsnap7-1 libsnap7-dev
+```
 
 ## Pomoc
 
