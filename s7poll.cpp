@@ -14,15 +14,30 @@
 
 #include <math.h>
 #include <vector>
-#include <windows.h>
-#include <unistd.h>
+
 #include <cstdlib>
 #include <valarray>
 
+// Obsługa systemu Linux i Windows
+#ifdef __linux__
+#include <unistd.h>
+void sleep_ms(unsigned int ms) {
+	usleep(ms * 1000);
+}
+void system_clear() {
+	system("clear");
+}
+#endif
 
-#ifdef OS_WINDOWS
+#if defined(_WIN32) || defined(_WIN64)
 #define WIN32_LEAN_AND_MEAN
-
+#include <windows.h>
+void sleep_ms(unsigned int ms) {
+    Sleep(ms);
+}
+void system_clear() {
+	system("cls");
+}
 #include <cstdint>
 
 #define NOT_STUPID 1
@@ -114,7 +129,7 @@ public:
 
 void s7poll::displayMsg(string type) {
 	if (type == "MENU") {
-		system("CLS");
+		system_clear();
 
 		cout << "+-----------------------------------------------------+\n" <<
 			" UZYCIE: s7poll <adres IP> <opcje>\n" <<
@@ -314,7 +329,7 @@ int main(int argc, char* argv[]) {
 					}
 				}
 
-				(onlyOnce == true) ? exit(1) : Sleep(Timeout);
+				(onlyOnce == true) ? exit(1) : sleep_ms(Timeout);
 
 			}
 		}
