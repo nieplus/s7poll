@@ -1,6 +1,15 @@
 # s7poll
 Narzędzie do odczytu danych ze sterownika z wykorzystaniem protokołu SNAP7.
 
+## Uruchomienie programu
+Do kompilacji i uruchomienia programu wymagane jest SNAP7
+
+Na systemach Debian/Ubuntu można je zainstalować za pomocą:
+
+```bash
+sudo apt install libsnap7-1 libsnap7-dev
+```
+
 ## Pomoc
 
 Uruchomienie narzędzia
